@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  db:
+    container_name: pg_container_1
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 30a301d72578dbb
+      POSTGRES_DB: test_db
+    ports:
+      - "5533:5432"
+
+  pgadmin:
+    container_name: pgadmin4_container_1
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: 30a301d72578dbb
+      PMA_HOST: db
+      PMA_PORT: 5432
+    ports:
+      - "5151:80"
